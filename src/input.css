@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+@layer utilities {
+  .number-button {
+    @apply bg-[#3c3c3c] text-white brightness-50 h-full w-full font-bold rounded hover:bg-[#323232];
+  }
+  .symbol-button {
+    @apply bg-[#323232] brightness-75 h-full w-full font-bold text-white rounded hover:brightness-90;
+  }
+}
