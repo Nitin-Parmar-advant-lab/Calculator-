@@ -1,9 +1,10 @@
-let display = document.getElementById('display');
-let history = document.getElementById('history');
+const display = document.getElementById('display');
+const history = document.getElementById('history');
 
 let screenText = ""; 
 let calculationText = "";
-let operators = ['+','-','*','/','^'];
+let operators = new Set(['+', '-', '*', '/', '^']);
+
 
 function press(key) {
     if (display.innerText === "Error" || display.innerText === "0") {
@@ -12,15 +13,26 @@ function press(key) {
     }
     console.log(key);
     
-    if(key === '.' && screenText.includes('.')){
-        return;
+    if (key === '.') {
+        const lastNumber = screenText.split(/[+\-*/^()]/).pop();
+        if (lastNumber.includes('.')) return;
     }
 
-    if (operators.includes(key)) {
-        if (screenText === '' && key !== '-') return;
-
+    if (operators.has(key)) {
         let lastChar = screenText.slice(-1);
-        if (operators.includes(lastChar) && key !== '-') return;
+        if (key === '-') {
+        if (
+            screenText === '' ||
+            lastChar === '('
+        ) {
+            screenText += '-';
+            calculationText += '-';
+            display.innerText = screenText;
+            return;
+        }
+        }
+
+        if (operators.has(lastChar)) return;
     }
 
 
@@ -80,7 +92,7 @@ function calculateSqrt() {
         screenText = result.toString();
         calculationText = result.toString();
     } catch (e) {
-        display.innerText = "Error";
+        display.innerText = "Error in calculateSqrt";
     }
 }
 
@@ -88,8 +100,11 @@ function calculate() {
     if (screenText === "") return;
 
     try {
-        let openBrackets = (calculationText.split("(").length - 1);
-        let closeBrackets = (calculationText.split(")").length - 1);
+        // let openBrackets = (calculationText.split("(").length - 1);
+        // let closeBrackets = (calculationText.split(")").length - 1);
+
+        let openBrackets = (calculationText.match(/\(/g) || []).length;
+        let closeBrackets = (calculationText.match(/\)/g) || []).length;
 
         while (openBrackets > closeBrackets) {
             calculationText = calculationText + ")";
@@ -109,7 +124,7 @@ function calculate() {
         screenText = result.toString();
         calculationText = result.toString();
     } catch (err) {
-        display.innerText = "Error";
+        display.innerText = "Error in evalution ";
     }
 }
 
@@ -118,6 +133,10 @@ function clearAll() {
     calculationText = "";
     display.innerText = "0";
     history.innerText = "";
+
+    if (document.activeElement) {
+        document.activeElement.blur();
+    }
 }
 
 function backspace() {
@@ -132,6 +151,7 @@ function backspace() {
 }
 
 document.addEventListener('keydown', function (event) {
+    event.preventDefault();
     let k = event.key;
 
     let allowed = ['1','2','3','4','5','6','7','8','9','0','.','+','-','*','/','^','%','l'];
@@ -149,7 +169,5 @@ document.addEventListener('keydown', function (event) {
         scientific('c');
     } else if (k === 't') {
         scientific('t');
-    } else if (k === 'l') {
-        press('l');
     }
 });
