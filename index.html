@@ -8,55 +8,56 @@
         <link rel="stylesheet" href="./src/output.css">
     </head>
 
-    <body class="bg-black">
+    <body class="bg-gray-900">
         <div class="center flex justify-center items-center h-screen">
             <main class="w-200 h-150 p-3">
-                <div class="grid grid-cols-4 text-white gap-3 h-full">
+                <div class="all-btn grid grid-cols-4 text-white gap-3 h-full">
 
                     <div class="result col-span-4 flex flex-col items-end justify-end mb-2">
                         <div id="history"
-                            class="h-10 w-full bg-[#202020] flex items-center rounded-t justify-end pr-2 text-gray-400 text-sm">
+                            class="h-10 w-full bg-[#303030] flex items-center rounded-t justify-end pr-3 text-gray-400 text-md">
                         </div>
                         <div id="display"
-                            class="h-16 w-full bg-[#303030] flex items-center rounded-b justify-end pr-2 text-3xl font-bold ">
+                            class="h-14 w-full bg-[#303030] flex items-center rounded-b justify-end pr-3 text-5xl font-bold pb-2">
                             0</div>
                     </div>
+                        
+                        <!-- <button data-action="sin" class="number-button">sin</button>
+                        <button data-action="cos" class="number-button">cos</button>
+                        <button data-action="tan" class="number-button">tan</button>
+                        <button data-key="l" class="number-button">log</button> -->
 
-                    <button onclick="scientific('s')" class="number-button">sin</button>
-                    <button onclick="scientific('c')" class="number-button">cos</button>
-                    <button onclick="scientific('t')" class="number-button">tan</button>
-                    <button onclick="press('l')" class="number-button">log</button>
-
-                    <button onclick="clearAll()"
+                        <button data-action="clear" 
                         class="bg-[#76B9ED] hover:bg-[#6DA9D8] rounded text-black font-bold text-xl cursor-pointer">C</button>
-                    <button onclick="press('%')" class="number-button">%</button>
-                    <button onclick="press('^')" class="number-button">^</button>
-                    <button onclick="calculateSqrt()" class="number-button">√</button>
+                        <button data-key="%" class="number-button">%</button>
+                        <button data-key="^" class="number-button">^</button>
+                        <!-- <button data-action="sqrt" class="number-button">√</button> -->
+                        <button data-key="/" class="number-button">/</button>
+                        
+                        <button data-key="7" class="number-button">7</button>
+                        <button data-key="8" class="number-button">8</button>
+                        <button data-key="9" class="number-button">9</button>
+                        <button data-key="*" class="number-button">*</button>
+                        
+                        <button data-key="4" class="number-button">4</button>
+                        <button data-key="5" class="number-button">5</button>
+                        <button data-key="6" class="number-button">6</button>
+                        <button data-key="-" class="number-button">-</button>
 
-                    <button onclick="press('7')" class="number-button">7</button>
-                    <button onclick="press('8')" class="number-button">8</button>
-                    <button onclick="press('9')" class="number-button">9</button>
-                    <button onclick="press('/')" class="number-button">/</button>
+                        <button data-key="1" class="number-button">1</button>
+                        <button data-key="2" class="number-button">2</button>
+                        <button data-key="3" class="number-button">3</button>
+                        <button data-key="+" class="number-button">+</button>
 
-                    <button onclick="press('4')" class="number-button">4</button>
-                    <button onclick="press('5')" class="number-button">5</button>
-                    <button onclick="press('6')" class="number-button">6</button>
-                    <button onclick="press('*')" class="number-button">*</button>
-
-                    <button onclick="press('1')" class="number-button">1</button>
-                    <button onclick="press('2')" class="number-button">2</button>
-                    <button onclick="press('3')" class="number-button">3</button>
-                    <button onclick="press('+')" class="number-button">+</button>
-
-                    <button onclick="press('0')" class="number-button">0</button>
-                    <button onclick="press('.')" class="number-button">.</button>
-                    <button onclick="backspace()" class="number-button text-2xl">&lt;</button>
-                    <button onclick="calculate()" class="number-button ">=</button>
+                        <button data-key="0" class="number-button">0</button>
+                        <button data-key="." class="number-button">.</button>
+                        <button data-action="backspace" class="number-button text-2xl">&lt;</button>
+                        <button data-action="equals" class="number-button">=</button>
                 </div>
             </main>
         </div>
 
-        <script src="script.js"></script>
+        <script type="module" src="script.js"></script>
     </body>
 
     </html>
