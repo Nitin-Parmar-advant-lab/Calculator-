@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Calculator</title>
+        <link rel="stylesheet" href="./src/output.css">
+    </head>
+
+    <body class="bg-gray-900 text-white">
+        <div class="center flex justify-center items-center h-screen">
+            <main class="w-200 h-150 p-3">
+                <div  class="taggle flex gap-4 border-2 w-44 h-10 justify-center items-center bg-gray-700 text-sm rounded-md mt-10 mb-6">
+                    <div class="standerd mode"><span>Standerd</span></div>
+                    <div class="scientific ">Scientific</div>
+                </div >
+
+                <div class="all-btn grid grid-cols-4 gap-3 ">
+
+                    <div class="result col-span-4 flex flex-col items-end ">
+                        <div id="history"
+                            class="h-10 w-full bg-[#303030] flex items-center rounded-t justify-end pr-3 text-gray-400 text-md">
+                        </div>
+                        <div id="display"
+                            class="h-14 w-full bg-[#303030] flex items-center rounded-b justify-end pr-3 text-5xl font-bold pb-2">0
+                        </div>
+                    </div>
+                        
+                        <!-- <button data-action="sin" class="number-button">sin</button>
+                        <button data-action="cos" class="number-button">cos</button>
+                        <button data-action="tan" class="number-button">tan</button>
+                        <button data-key="l" class="number-button">log</button> -->
+                        <!-- <button data-action="sqrt" class="number-button">√</button> -->
+
+                        <button data-action="clear" 
+                        class="bg-[#76B9ED] hover:bg-[#6DA9D8] rounded text-black font-bold text-xl cursor-pointer">C</button>
+                          <button data-key="%" class="number-button">%</button>
+                        <button data-key="^" class="number-button">^</button>
+                        <button data-key="/" class="number-button">/</button>
+                        
+                        <button data-key="7" class="number-button">7</button>
+                        <button data-key="8" class="number-button">8</button>
+                        <button data-key="9" class="number-button">9</button>
+                        <button data-key="*" class="number-button">*</button>
+                        
+                        <button data-key="4" class="number-button">4</button>
+                        <button data-key="5" class="number-button">5</button>
+                        <button data-key="6" class="number-button">6</button>
+                        <button data-key="-" class="number-button">-</button>
+
+                        <button data-key="1" class="number-button">1</button>
+                        <button data-key="2" class="number-button">2</button>
+                        <button data-key="3" class="number-button">3</button>
+                        <button data-key="+" class="number-button">+</button>
+
+                        <button data-key="0" class="number-button">0</button>
+                        <button data-key="." class="number-button">.</button>
+                        <button data-action="backspace" class="number-button text-2xl">&lt;</button>
+                        <button data-action="equals" class="number-button">=</button>
+                </div>
+            </main>
+        </div>
+
+        <script type="module" src="script.js"></script>
+    </body>
+
+    </html>

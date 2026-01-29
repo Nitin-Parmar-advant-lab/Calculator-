@@ -1,11 +1,20 @@
 @import "tailwindcss";
 
 @layer utilities {
-  .number-button {
+  .standard-button {
     @apply bg-[#3c3c3c] text-white brightness-90 h-full w-full font-bold rounded hover:bg-[#323232] cursor-pointer transition-colors;
   }
   
-  /* .symbol-button {
-    @apply bg-[#3c3c3c] brightness-90 h-full w-full font-bold text-white rounded hover:brightness-110 cursor-pointer transition-all;
-  } */
+  /* .mode {
+    @apply border p-1 rounded-lg bg-white text-black
+    w-auto transition-all duration-300 ease-in-out;
+    } */
+    
+    .scientific-button {
+      @apply bg-[#3c3c3c] text-gray-300 brightness-90 h-full w-full font-bold rounded hover:bg-[#323232] cursor-pointer transition-colors text-2xl;
+    }
+
+    .scientific-standard-button {
+      @apply bg-[#3c3c3c] text-gray-100 brightness-90 h-full w-full text-xl font-normal rounded hover:bg-[#323232] cursor-pointer transition-colors;
+    }
 }

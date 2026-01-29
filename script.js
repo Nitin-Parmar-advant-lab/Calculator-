@@ -1,14 +1,14 @@
 const display = document.getElementById('display');
 const history = document.getElementById('history');
 
-const allButtons = document.querySelector('.all-btn');
+const allStdBtn = document.getElementById('all-btn-stn');
 
 let firstValue = "";
 let secondValue = "";
 let operator = "";
 let result;
 
-allButtons.addEventListener("click", (e) => {
+allStdBtn.addEventListener("click", (e) => {
     const btn = e.target.closest('button');
     if (!btn) return;
 
@@ -118,7 +118,7 @@ function simpleCalculate() {
 }
 
 function displayFn() {
-    display.innerText = firstValue + operator + secondValue;
+    display.innerText = firstValue + operator + secondValue || 0;
 }
 
 function backspace() {
