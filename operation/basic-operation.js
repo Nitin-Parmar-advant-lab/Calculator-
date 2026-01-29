@@ -1,6 +1,6 @@
-// String to Postfix (shunting yard)
 import {operators} from "../operators.js"
 
+// String to Postfix (shunting yard)
 const operation = {
     '+': { prec: 2, exec: (a, b) => a + b },
     '-': { prec: 2, exec: (a, b) => a - b },
