@@ -8,122 +8,134 @@
 </head>
 
 <body class="bg-black text-white">
+
   <div class="flex justify-center items-center flex-col h-screen">
+      <div id="taggle" class="relative flex gap-4 border-2 w-44 h-10 justify-between items-center bg-gray-700 text-sm rounded-md border-gray-500 px-2 font-bold isolate ">
+        <div id="slider" class="absolute bg-white rounded-md transition-all duration-300 ease-in-out -z-10"></div>
+        <!-- <button class="mode-btn w-full py-1 text-black transition-colors duration-300">Standard</button> -->
+        <button class="mode-btn w-full py-1 text-gray-400 transition-colors duration-300">Scientific</button>
+    </div>
 
-      <div id="taggle" class="relative flex gap-4 border-2 w-44 h-10 justify-between items-center bg-gray-700 text-sm rounded-md border-gray-500 px-2 font-bold isolate">
-          <div id="slider" class="absolute bg-white rounded-md transition-all duration-300 ease-in-out -z-10"></div>
+    <div id="calculator-with-memory" class="flex justify-center items-center flex-row ">
 
-          <button class="mode-btn w-full py-1 text-black transition-colors duration-300">Standard</button>
-          <button class="mode-btn w-full py-1 text-gray-400 transition-colors duration-300">Scientific</button>
-      </div>
+      <main id="calculator-container" class="w-200 h-150 bg-transparent p-4 flex flex-col gap-4">
 
-    <main id="calculator-container" class="w-200 h-150 bg-transparent p-4 flex flex-col gap-4">
+            <!-- <div id="taggle" class="flex gap-4 border-2 w-44 h-10 justify-center items-center bg-gray-700 text-sm rounded-md border-gray-500 px-2 font-bold">
+                <button class="Standard mode">Standard</button>
+                <button class="Scientific">Scientific</button>
+            </div> -->
 
-        <!-- <div id="taggle" class="flex gap-4 border-2 w-44 h-10 justify-center items-center bg-gray-700 text-sm rounded-md border-gray-500 px-2 font-bold">
-            <button class="Standard mode">Standard</button>
-            <button class="Scientific">Scientific</button>
-        </div> -->
+          <div class="flex flex-col">
+            <div id="history"
+              class="h-10 w-full bg-[#303030] flex items-center
+                    justify-end pr-3 text-gray-400 rounded-t">
+            </div>
+            <div id="display"
+              class="h-14 w-full bg-[#303030] flex items-center
+                    justify-end pr-3 text-5xl font-bold rounded-b">
+              0
+            </div>
+          </div>
 
+          <div id="all-btn-stn" class="grid grid-cols-4 gap-3 flex-1 transition-all duration-300">
 
-      <div class="flex flex-col">
-        <div id="history"
-          class="h-10 w-full bg-[#303030] flex items-center
-                 justify-end pr-3 text-gray-400 rounded-t">
-        </div>
-        <div id="display"
-          class="h-14 w-full bg-[#303030] flex items-center
-                 justify-end pr-3 text-5xl font-bold rounded-b">
-          0
-        </div>
-      </div>
-
-      <div id="all-btn-stn" class="grid grid-cols-4 gap-3 flex-1 transition-all duration-300">
-
-        <button data-key="%"class="standard-button">%</button>
-        <button data-key="^"class="standard-button">^</button>
-        <button data-key="/"class="standard-button">/</button>
-        <button data-action="clear" class=" bg-[#76B9ED] hover:bg-[#6DA9D8] rounded text-black font-bold">C</button>
-        
-        <button data-key="7" class="standard-button">7</button>
-        <button data-key="8" class="standard-button">8</button>
-        <button data-key="9" class="standard-button">9</button>
-        <button data-key="*" class="standard-button">*</button>
-
-        <button data-key="4" class="standard-button">4</button>
-        <button data-key="5" class="standard-button">5</button>
-        <button data-key="6" class="standard-button">6</button>
-        <button data-key="-" class="standard-button">-</button>
-
-        <button data-key="1" class="standard-button">1</button>
-        <button data-key="2" class="standard-button">2</button>
-        <button data-key="3" class="standard-button">3</button>
-        <button data-key="+" class="standard-button">+</button>
-
-        <button data-key="0" class="standard-button">0</button>
-        <button data-key="." class="standard-button">.</button>
-        <button data-action="backspace" class="standard-button text-2xl">&lt;</button>
-        <button data-action="equals" class="standard-button">=</button>
-      </div>
-
-      <div id="all-btn-scientific" class="grid grid-cols-6 gap-3 flex-1 transition-all duration-300">
-            <button class="scientific-button">DEG</button>
-            <button class="scientific-button">MC</button>
-            <button class="scientific-button">MR</button>
-            <button class="scientific-button">M+</button>
-            <button class="scientific-button">M-</button>
-            <button class="scientific-button">MS</button>
+            <button data-key="%"class="standard-button">%</button>
+            <button data-key="^"class="standard-button">^</button>
+            <button data-key="/"class="standard-button">/</button>
+            <button data-action="clear" class=" bg-[#76B9ED] hover:bg-[#6DA9D8] rounded text-black font-bold">C</button>
             
-            <button class="scientific-button">sin</button>
-            <button class="scientific-button">cos</button>
-            <button class="scientific-button">ten</button>
-            <button class="scientific-button">cot</button>
-            <button class="scientific-button">sec</button>
-            <button class="scientific-button">cosec</button>
+            <button data-key="7" class="standard-button">7</button>
+            <button data-key="8" class="standard-button">8</button>
+            <button data-key="9" class="standard-button">9</button>
+            <button data-key="*" class="standard-button">*</button>
 
-            <button class="scientific-button">n!</button>
-            <button class="scientific-button">1/x</button>
-            <button class="scientific-button">|x|</button>
-            <button class="scientific-button">exp</button>
-            <button class="scientific-button">e</button>
-            <button class="scientific-button">PI</button>
+            <button data-key="4" class="standard-button">4</button>
+            <button data-key="5" class="standard-button">5</button>
+            <button data-key="6" class="standard-button">6</button>
+            <button data-key="-" class="standard-button">-</button>
 
-            <button class="scientific-button">x<sup>2</sup></button>
-            <button data-key="%"class="scientific-standard-button">%</button>
-            <button data-key="^"class="scientific-standard-button">^</button>
-            <button data-key="/"class="scientific-standard-button">/</button>
-            <button data-action="clear" class=" bg-[#76B9ED] hover:bg-[#6DA9D8] rounded text-black font-bold col-span-2">C</button>
+            <button data-key="1" class="standard-button">1</button>
+            <button data-key="2" class="standard-button">2</button>
+            <button data-key="3" class="standard-button">3</button>
+            <button data-key="+" class="standard-button">+</button>
 
-            <button class="scientific-button">2√x</button>
-            <button class="scientific-button">10<sup>x</sup></button>
-            <button data-key="7" class="scientific-standard-button">7</button>
-            <button data-key="8" class="scientific-standard-button">8</button>
-            <button data-key="9" class="scientific-standard-button">9</button>
-            <button data-key="*" class="scientific-standard-button">*</button>
+            <button data-key="0" class="standard-button">0</button>
+            <button data-key="." class="standard-button">.</button>
+            <button data-action="backspace" class="standard-button text-2xl">&lt;</button>
+            <button data-action="equals" class="standard-button">=</button>
+          </div>
 
-            <button class="scientific-button">&lpar;</button>
-            <button class="scientific-button">&rpar;</button>
-            <button data-key="4" class="scientific-standard-button">4</button>
-            <button data-key="5" class="scientific-standard-button">5</button>
-            <button data-key="6" class="scientific-standard-button">6</button>
-            <button data-key="-" class="scientific-standard-button">-</button>
+          <div id="all-btn-scientific" class="grid grid-cols-6 gap-3 flex-1 transition-all duration-300">
+                <button data-action="deg" class="scientific-button">DEG</button>
+                <button data-action="mc" class="scientific-button">MC</button>
+                <button data-action="mr" class="scientific-button">MR</button>
+                <button data-action="m+" class="scientific-button">M+</button>
+                <button data-action="m-" class="scientific-button">M-</button>
+                <button data-action="ms" class="scientific-button">MS</button>
+                
+                <button data-action="sin" class="scientific-button">sin</button>
+                <button data-action="cos" class="scientific-button">cos</button>
+                <button data-action="ten" class="scientific-button">ten</button>
+                <button data-action="cot" class="scientific-button">cot</button>
+                <button data-action="sec" class="scientific-button">sec</button>
+                <button data-action="cosec" class="scientific-button">cosec</button>
 
-            <button class="scientific-button">log</button>
-            <button class="scientific-button">ln</button>
-            <button data-key="1" class="scientific-standard-button">1</button>
-            <button data-key="2" class="scientific-standard-button">2</button>
-            <button data-key="3" class="scientific-standard-button">3</button>
-            <button data-key="+" class="scientific-standard-button">+</button>
-            
-            <button class="scientific-button">+/-</button>
-            <button data-key="0" class="scientific-standard-button">0</button>
-            <button data-key="." class="scientific-standard-button">.</button>
-            <button data-action="backspace" class="scientific-standard-button text-2xl">&lt;</button>
-            <button data-action="equals" class="scientific-standard-button col-span-2">=</button>
+                <button data-action="nF" class="scientific-button">n!</button>
+                <button data-action="1Bx" class="scientific-button">1/x</button>
+                <button data-action="modX" class="scientific-button">|x|</button>
+                <button data-action="exp" class="scientific-button">exp</button>
+                <button data-action="e" class="scientific-button">e</button>
+                <button data-action="pi" class="scientific-button">PI</button>
+
+                <button data-action="xR2" class="scientific-button">x<sup>2</sup></button>
+                <button data-key="%"class="scientific-standard-button">%</button>
+                <button data-key="^"class="scientific-standard-button">^</button>
+                <button data-key="/"class="scientific-standard-button">/</button>
+                <button data-action="clear" class=" bg-[#76B9ED] hover:bg-[#6DA9D8] rounded text-black font-bold col-span-2">C</button>
+
+                <button data-action="sqrt" class="scientific-button">√x</button>
+                <button data-action="10Rx" class="scientific-button">10<sup>x</sup></button>
+                <button data-key="7" class="scientific-standard-button">7</button>
+                <button data-key="8" class="scientific-standard-button">8</button>
+                <button data-key="9" class="scientific-standard-button">9</button>
+                <button data-key="*" class="scientific-standard-button">*</button>
+
+                <button data-action="&lpar" class="scientific-button">&lpar;</button>
+                <button data-action="&rpar" class="scientific-button">&rpar;</button>
+                <button data-key="4" class="scientific-standard-button">4</button>
+                <button data-key="5" class="scientific-standard-button">5</button>
+                <button data-key="6" class="scientific-standard-button">6</button>
+                <button data-key="-" class="scientific-standard-button">-</button>
+
+                <button data-action="log" class="scientific-button">log</button>
+                <button data-action="ln" class="scientific-button">ln</button>
+                <button data-key="1" class="scientific-standard-button">1</button>
+                <button data-key="2" class="scientific-standard-button">2</button>
+                <button data-key="3" class="scientific-standard-button">3</button>
+                <button data-key="+" class="scientific-standard-button">+</button>
+                
+                <button data-action="+/-" class="scientific-button">+/-</button>
+                <button data-key="0" class="scientific-standard-button">0</button>
+                <button data-key="." class="scientific-standard-button">.</button>
+                <button data-action="backspace" class="scientific-standard-button text-2xl">&lt;</button>
+                <button data-action="equals" class="scientific-standard-button col-span-2">=</button>
+          </div>
+      </main>
+
+      <div id="memory-side-bar" class="ml-6 border-2 rounded bg-gray-700 border-gray-500 h-142 w-50 text-center font-bold">
+            <div class="memory-header w-full">
+              <p class="text-gray-400 border-b-2 border-gray-500">Memory's empty</p>
+            </div>
+            <div class="memory-content">
+
+            </div>
       </div>
-    </main>
-</div>
+    </div>
+    
+  </div>
 
-    <script type="module" src="script.js"></script>
-    <script type="module" src="taggle.js"></script>
 </body>
+  <script type="module" src="standard-script.js"></script>
+  <script type="module" src="taggle.js"></script>
+  <script type="module" src="scientific-script.js"></script>
 </html>

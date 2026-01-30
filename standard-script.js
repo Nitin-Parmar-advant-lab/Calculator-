@@ -45,6 +45,7 @@ document.addEventListener('keydown', function (event) {
     }
 });
 
+
 function press(key) {
     if (display.innerText === "Error") clearAll();
 
@@ -61,6 +62,7 @@ function press(key) {
 function append(value) {
     if (operator === "") {
         if (value === '.' && firstValue.includes('.')) return;
+        if(value ==  "0" && firstValue == "0") return
         firstValue += value;
     } else {
         if (value === '.' && secondValue.includes('.')) return;
@@ -82,7 +84,7 @@ function setOperator(value) {
 function simpleCalculate() {
     if (!firstValue || !secondValue || !operator) return;
 
-
+    
     switch (operator) {
         case '+':
             result = parseFloat(firstValue) + parseFloat(secondValue);
