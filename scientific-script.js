@@ -2,15 +2,13 @@ const display = document.getElementById('display');
 const history = document.getElementById('history');
 
 const allSciBtn = document.getElementById('all-btn-scientific');
+const memoryHeader = document.querySelector('.memory-header p');
+const memoryContainer = document.querySelector('.memory-content');
 
 let inputArr = [];
 let currentInput = "";
-let memory = [];
 let isDegree = true;
-
-function roundFigure(val) {
-    return Math.round(val * 10000) / 10000;
-}
+let memoryArr = [];
 
 allSciBtn.addEventListener("click", (e) => {
     const btn = e.target.closest('button');
@@ -38,7 +36,7 @@ allSciBtn.addEventListener("click", (e) => {
 
         case 'sin': sin(); break;
         case 'cos': cos(); break;
-        case 'ten': ten(); break;
+        case 'tan': tan(); break;
         case 'cot': cot(); break;
         case 'sec': sec(); break;
         case 'cosec': cosec(); break;
@@ -61,7 +59,6 @@ allSciBtn.addEventListener("click", (e) => {
     }
 })
 
-
 document.addEventListener('keydown', function (event) {
     event.preventDefault();
     const k = event.key;
@@ -77,6 +74,9 @@ document.addEventListener('keydown', function (event) {
     }
 });
 
+function roundFigure(val) {
+    return Math.round(val * 10000) / 10000;
+}
 function displayFn() {
     display.innerText = currentInput || "0";
     console.log(inputArr);
@@ -305,12 +305,12 @@ function exp() {
 }
 
 function ee() {
-    currentInput = Math.E.toString();
+    currentInput = roundFigure(Math.E).toString();
     displayFn();
 }
 
 function pi() {
-    currentInput = Math.PI.toString();
+    currentInput = roundFigure(Math.PI).toString();
     displayFn();
 }
 
@@ -369,4 +369,67 @@ function rpar() {
     inputArr.push(")");
     console.log(`from rpar ${inputArr}`);
     displayFn();
+}
+
+//--------------Memory Fun---------------------
+
+function ms() {
+    let valToStore = currentInput === "" ? "0" : currentInput;
+    if (memoryArr.length > 0 && memoryArr[0] === parseFloat(valToStore)) {
+        return;
+    }
+    memoryArr.unshift(parseFloat(valToStore));
+    updateMemoryUI();
+}
+
+function mr() {
+    if (memoryArr.length === 0) return;
+    let topValue = memoryArr[0];
+    currentInput = topValue.toString();
+    displayFn();
+}
+
+function mAdd() {
+    if (memoryArr.length === 0) {
+        ms();
+        return;
+    }
+
+    let valToAdd = parseFloat(currentInput === "" ? "0" : currentInput);
+    memoryArr[0] += valToAdd;
+    updateMemoryUI();
+}
+
+function mRem() {
+    if (memoryArr.length === 0) {
+        let valToStore = currentInput === "" ? "0" : currentInput;
+        memoryArr.unshift(-parseFloat(valToStore));
+        updateMemoryUI();
+        return;
+    }
+
+    let valToSub = parseFloat(currentInput === "" ? "0" : currentInput);
+    memoryArr[0] -= valToSub;
+    updateMemoryUI();
+}
+
+function mc() {
+    memoryArr = [];
+    updateMemoryUI();
+}
+
+function updateMemoryUI() {
+    memoryContainer.innerHTML = "";
+
+    if (memoryArr.length === 0) {
+        memoryHeader.innerText = "Memory's empty";
+    } else {
+        memoryHeader.innerText = "";
+        memoryArr.forEach((val) => {
+            const memItem = document.createElement("div");
+            memItem.className = "p-2 text-right text-xl font-bold hover:bg-gray-600 cursor-pointer border-b border-gray-600 break-words mr-1";
+            memItem.innerText = val;
+            memoryContainer.appendChild(memItem);
+        });
+    }
 }
